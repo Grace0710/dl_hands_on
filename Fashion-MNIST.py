@@ -22,6 +22,8 @@ def matplotlib_imshow(img, one_channel=False):
     else:
         plt.imshow(np.transpose(npimg, (1, 2, 0)))
 
+    # plt.show()
+
 
 if __name__ == '__main__':
 
@@ -59,3 +61,7 @@ if __name__ == '__main__':
     # Create a grid from the images and show them
     img_grid = torchvision.utils.make_grid(images)
     matplotlib_imshow(img_grid)
+
+    writer = SummaryWriter('runs/fashion_mnist_experiment_1')
+    writer.add_image('Four Fashion-MNIST Images', img_grid)
+    writer.flush()
